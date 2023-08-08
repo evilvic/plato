@@ -1,9 +1,17 @@
 <script setup lang="ts">
+import { onMounted } from 'vue'
+import { getSafeAreaInsets } from '@/plugins/SafeAreaPlugin'
+import { RouterView } from 'vue-router'
+
+onMounted( async () => {
+  const safeAreaInsets = await getSafeAreaInsets()
+  document.documentElement.style.setProperty('--safe-area-inset-top', `${safeAreaInsets.top}px`);
+  document.documentElement.style.setProperty('--safe-area-inset-bottom', `${safeAreaInsets.bottom}px`);
+  document.documentElement.style.setProperty('--safe-area-inset-left', `${safeAreaInsets.left}px`);
+  document.documentElement.style.setProperty('--safe-area-inset-right', `${safeAreaInsets.right}px`);
+})
 </script>
 
 <template>
   <RouterView />
 </template>
-
-<style scoped>
-</style>
