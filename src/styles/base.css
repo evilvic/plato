@@ -1,0 +1,30 @@
+/*  NOTE:  Colors variables */
+:root {
+
+  --blue: #87CEEB;
+  --purple: #B19CD9;
+  --orange: #FFD8A8;
+
+  --green: #B6D7A8;
+  --yellow: #FFED99;
+  --red: #F16C7F;
+
+  --black-29: #292929;
+  --black-39: #393939;
+  --black-49: #494949;
+  --black-59: #595959;
+
+  --white-fd: #fdfdfd;
+
+  --dark-blue: #4F7B8C;
+
+}
+
+/*  NOTE:  Reset styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
