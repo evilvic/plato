@@ -1,4 +1,4 @@
-// import { registerPlugin } from '@capacitor/core'
+import { registerPlugin } from '@capacitor/core'
 
 interface SafeAreaInsets {
   top: number;
@@ -7,7 +7,11 @@ interface SafeAreaInsets {
   right: number;
 }
 
-const SafeArea = registerPlugin('SafeAreaPlugin');
+interface SafeAreaPlugin {
+  getInsets: () => Promise<SafeAreaInsets>;
+}
+
+const SafeArea = registerPlugin<SafeAreaPlugin>('SafeAreaPlugin')
 
 export const getSafeAreaInsets = async (): Promise<SafeAreaInsets> => {
   try {
