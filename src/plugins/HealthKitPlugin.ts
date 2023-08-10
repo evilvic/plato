@@ -1,22 +1,41 @@
 import { registerPlugin } from '@capacitor/core'
 
-interface HealthKitPlugin {
-    requestAuthorization: (
-        options: { 
-            all: string[], 
-            read: string[], 
-            write: string[] 
-        }
-    ) => Promise<void>
-    queryHKitSampleType: (
-        options: {
-            startDate: string,
-            endDate: string,
-            limit: number,
-            sampleName: string
-        }
-    ) => Promise<{ countReturn: number, resultData: any[] }>
+// ----- TS-DEFS -----
+
+interface SampleType {
+  value: number
+  endDate: string
+  source: string
+  startDate: string
+  uuid: string
+  sourceBundleId: string
+  unitName: string
+  duration: number
+
 }
+
+type AuthOptions = {
+  all: string[]
+  read: string[]
+  write: string[]
+}
+
+type QueryOptions = {
+  startDate: string
+  endDate: string
+  limit: number
+  sampleName: string
+}
+
+interface HealthKitPlugin {
+  requestAuthorization: (options: AuthOptions) => Promise<void>
+  queryHKitSampleType: (options: QueryOptions) => Promise<{
+    countReturn: number,
+    resultData: SampleType[]
+  }>
+}
+
+// ----- END  TS-DEFS -----
 
 const HealthKit = registerPlugin<HealthKitPlugin>('HealthKitPlugin')
 
@@ -55,6 +74,3 @@ export const queryData = async () => {
     console.log(error);
   }
 }
-
-
-// {"countReturn":1,"resultData":[{"value":500,"endDate":"2023-08-10T02:55:00Z","source":"Salud","startDate":"2023-08-10T02:55:00Z","uuid":"E789521C-8A1A-4910-B8F4-FDD1A892CED7","sourceBundleId":"com.apple.Health","unitName":"milliliter","duration":0}]}
