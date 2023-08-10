@@ -38,4 +38,42 @@ public class HealthKitPlugin: CAPPlugin {
         }
     }
 
+    @objc func queryHKitSampleType(_ call: CAPPluginCall) {
+        guard let _sampleName = call.options["sampleName"] as? String else {
+            return call.reject("Must provide sampleName")
+        }
+        guard let startDateString = call.options["startDate"] as? String else {
+            return call.reject("Must provide startDate")
+        }
+        guard let endDateString = call.options["endDate"] as? String else {
+            return call.reject("Must provide endDate")
+        }
+        guard let _limit = call.options["limit"] as? Int else {
+            return call.reject("Must provide limit")
+        }
+        
+        let _startDate = HealthKitHelper.getDateFromString(inputDate: startDateString)
+        let _endDate = HealthKitHelper.getDateFromString(inputDate: endDateString)
+        
+        let limit: Int = (_limit == 0) ? HKObjectQueryNoLimit : _limit
+        
+        let predicate = HKQuery.predicateForSamples(withStart: _startDate, end: _endDate, options: HKQueryOptions.strictStartDate)
+        
+        guard let sampleType: HKSampleType = HealthKitHelper.getSampleType(sampleName: _sampleName) else {
+            return call.reject("Error in sample name")
+        }
+        
+        let query = HKSampleQuery(sampleType: sampleType, predicate: predicate, limit: limit, sortDescriptors: nil) {
+            _, results, _ in
+            guard let output: [[String: Any]] = HealthKitHelper.generateOutput(sampleName: _sampleName, results: results) else {
+                return call.reject("Error happened while generating outputs")
+            }
+            call.resolve([
+                "countReturn": output.count,
+                "resultData": output,
+            ])
+        }
+        HealthKitHelper.healthStore.execute(query)
+    }
+
 }

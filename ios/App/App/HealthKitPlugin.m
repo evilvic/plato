@@ -10,4 +10,5 @@
 
 CAP_PLUGIN(HealthKitPlugin, "HealthKitPlugin",
     CAP_PLUGIN_METHOD(requestAuthorization, CAPPluginReturnPromise);
+    CAP_PLUGIN_METHOD(queryHKitSampleType, CAPPluginReturnPromise);
 )
