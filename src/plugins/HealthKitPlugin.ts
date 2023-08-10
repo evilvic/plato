@@ -1,41 +1,5 @@
 import { registerPlugin } from '@capacitor/core'
-
-// ----- TS-DEFS -----
-
-interface SampleType {
-  value: number
-  endDate: string
-  source: string
-  startDate: string
-  uuid: string
-  sourceBundleId: string
-  unitName: string
-  duration: number
-
-}
-
-type AuthOptions = {
-  all: string[]
-  read: string[]
-  write: string[]
-}
-
-type QueryOptions = {
-  startDate: string
-  endDate: string
-  limit: number
-  sampleName: string
-}
-
-interface HealthKitPlugin {
-  requestAuthorization: (options: AuthOptions) => Promise<void>
-  queryHKitSampleType: (options: QueryOptions) => Promise<{
-    countReturn: number,
-    resultData: SampleType[]
-  }>
-}
-
-// ----- END  TS-DEFS -----
+import type { HealthKitPlugin } from '@/plugins/HealthKitPlugin.types'
 
 const HealthKit = registerPlugin<HealthKitPlugin>('HealthKitPlugin')
 
@@ -52,10 +16,7 @@ export const requestHKAuthorization = async () => {
 }
 
 function formatDateToISO8601(date: string | number | Date): string {
-  const jsDate = new Date(date);
-  const isoDate = jsDate.toISOString();
-  
-  return isoDate;
+  return new Date(date).toISOString();
 }
   
 const today = new Date();
