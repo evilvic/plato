@@ -1,22 +1,5 @@
 import { registerPlugin } from '@capacitor/core'
-
-interface HealthKitPlugin {
-    requestAuthorization: (
-        options: { 
-            all: string[], 
-            read: string[], 
-            write: string[] 
-        }
-    ) => Promise<void>
-    queryHKitSampleType: (
-        options: {
-            startDate: string,
-            endDate: string,
-            limit: number,
-            sampleName: string
-        }
-    ) => Promise<{ countReturn: number, resultData: any[] }>
-}
+import type { HealthKitPlugin } from '@/plugins/HealthKitPlugin.types'
 
 const HealthKit = registerPlugin<HealthKitPlugin>('HealthKitPlugin')
 
@@ -33,10 +16,7 @@ export const requestHKAuthorization = async () => {
 }
 
 function formatDateToISO8601(date: string | number | Date): string {
-  const jsDate = new Date(date);
-  const isoDate = jsDate.toISOString();
-  
-  return isoDate;
+  return new Date(date).toISOString();
 }
   
 const today = new Date();
@@ -55,6 +35,3 @@ export const queryData = async () => {
     console.log(error);
   }
 }
-
-
-// {"countReturn":1,"resultData":[{"value":500,"endDate":"2023-08-10T02:55:00Z","source":"Salud","startDate":"2023-08-10T02:55:00Z","uuid":"E789521C-8A1A-4910-B8F4-FDD1A892CED7","sourceBundleId":"com.apple.Health","unitName":"milliliter","duration":0}]}
