@@ -37,7 +37,7 @@
   gap: 2px;
   padding: 2px;
   &__el {
-    width: 40px;
+    width: 44px;
     height: 44px;
     background: transparent;
     border: none;
