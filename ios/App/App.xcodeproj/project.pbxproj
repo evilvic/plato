@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C6579BC2AA7B89E002F7CC3 /* SuppressLongPressPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6579BB2AA7B89E002F7CC3 /* SuppressLongPressPlugin.swift */; };
+		1C6579BE2AA7D855002F7CC3 /* SuppressLongPressPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6579BD2AA7D855002F7CC3 /* SuppressLongPressPlugin.m */; };
 		1C99A7342A8318AD004014F1 /* SafeAreaPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C99A7332A8318AD004014F1 /* SafeAreaPlugin.swift */; };
 		1C99A7372A831913004014F1 /* SafeAreaPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C99A7362A831913004014F1 /* SafeAreaPlugin.m */; };
 		1CA042B02A832E8300313963 /* HealthKitPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA042AF2A832E8300313963 /* HealthKitPlugin.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C6579BB2AA7B89E002F7CC3 /* SuppressLongPressPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuppressLongPressPlugin.swift; sourceTree = "<group>"; };
+		1C6579BD2AA7D855002F7CC3 /* SuppressLongPressPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuppressLongPressPlugin.m; sourceTree = "<group>"; };
 		1C99A7332A8318AD004014F1 /* SafeAreaPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaPlugin.swift; sourceTree = "<group>"; };
 		1C99A7352A831913004014F1 /* App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "App-Bridging-Header.h"; sourceTree = "<group>"; };
 		1C99A7362A831913004014F1 /* SafeAreaPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafeAreaPlugin.m; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 				1CA042AF2A832E8300313963 /* HealthKitPlugin.swift */,
 				1CA042B12A832F0400313963 /* HealthKitPlugin.m */,
 				1CA042B32A832F5A00313963 /* HealthKitHelper.swift */,
+				1C6579BB2AA7B89E002F7CC3 /* SuppressLongPressPlugin.swift */,
+				1C6579BD2AA7D855002F7CC3 /* SuppressLongPressPlugin.m */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -227,9 +233,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C99A7372A831913004014F1 /* SafeAreaPlugin.m in Sources */,
+				1C6579BC2AA7B89E002F7CC3 /* SuppressLongPressPlugin.swift in Sources */,
 				1CA042B02A832E8300313963 /* HealthKitPlugin.swift in Sources */,
 				1C99A7342A8318AD004014F1 /* SafeAreaPlugin.swift in Sources */,
 				1CA042B22A832F0400313963 /* HealthKitPlugin.m in Sources */,
+				1C6579BE2AA7D855002F7CC3 /* SuppressLongPressPlugin.m in Sources */,
 				1CA042B42A832F5A00313963 /* HealthKitHelper.swift in Sources */,
 				504EC3081FED79650016851F /* AppDelegate.swift in Sources */,
 			);
