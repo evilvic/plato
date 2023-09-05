@@ -2,7 +2,23 @@
   <nav class="navigation">
     <button class="navigation__el">
       <div class="navigation__icon" />
-      <span class="navigation__topic">Nuevo</span>
+      <span class="navigation__topic">Item</span>
+    </button>
+    <button class="navigation__el">
+      <div class="navigation__icon" />
+      <span class="navigation__topic">Item</span>
+    </button>
+    <button class="navigation__el">
+      <div class="navigation__icon" />
+      <span class="navigation__topic">Item</span>
+    </button>
+    <button class="navigation__el">
+      <div class="navigation__icon" />
+      <span class="navigation__topic">Item</span>
+    </button>
+    <button class="navigation__el">
+      <div class="navigation__icon" />
+      <span class="navigation__topic">Item</span>
     </button>
   </nav>
 
@@ -14,12 +30,12 @@
 .navigation {
   width: 100%;
   height: calc(48px + var(--safe-area-inset-bottom));
-  background: $bg-19;
+  background: $bg-29;
   position: fixed;
   bottom: 0;
   display: flex;
-  justify-content: center;
-  padding: 4px 0 0;
+  gap: 2px;
+  padding: 2px;
   &__el {
     width: 40px;
     height: 44px;
@@ -29,7 +45,8 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 4px 0 0;
+    flex: 1;
+    padding-top: 4px;
   }
   &__icon {
     width: 24px;
