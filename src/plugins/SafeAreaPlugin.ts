@@ -18,6 +18,6 @@ export const getSafeAreaInsets = async (): Promise<SafeAreaInsets> => {
     return await SafeArea.getInsets()
   } catch (err) {
     console.error(err)
-    return { top: 0, bottom: 0, left: 0, right: 0 }
+    return { top: 59, bottom: 34, left: 0, right: 0 }
   }
 }
