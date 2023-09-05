@@ -1,27 +1,29 @@
 <template>
   <nav class="navigation">
-    <button class="navigation__el">
-      <div class="navigation__icon" />
-      <span class="navigation__topic">Item</span>
+    <button 
+      class="navigation__el"
+      :class="{'navigation__el--active': $route.name === 'diary'}"
+    >
+      <div class="navigation__icon"/>
+      <span class="navigation__topic">Diario</span>
     </button>
     <button class="navigation__el">
       <div class="navigation__icon" />
-      <span class="navigation__topic">Item</span>
+      <span class="navigation__topic">-</span>
     </button>
     <button class="navigation__el">
       <div class="navigation__icon" />
-      <span class="navigation__topic">Item</span>
+      <span class="navigation__topic">-</span>
     </button>
     <button class="navigation__el">
       <div class="navigation__icon" />
-      <span class="navigation__topic">Item</span>
+      <span class="navigation__topic">-</span>
     </button>
     <button class="navigation__el">
       <div class="navigation__icon" />
-      <span class="navigation__topic">Item</span>
+      <span class="navigation__topic">-</span>
     </button>
   </nav>
-
 </template>
 
 <style scoped lang="scss">
@@ -30,7 +32,8 @@
 .navigation {
   width: 100%;
   height: calc(48px + var(--safe-area-inset-bottom));
-  background: $bg-29;
+  background: rgba(41, 41, 41, 0.9);
+  backdrop-filter: blur(10px);
   position: fixed;
   bottom: 0;
   display: flex;
@@ -46,7 +49,7 @@
     justify-content: space-between;
     align-items: center;
     flex: 1;
-    padding-top: 4px;
+    padding: 4px 0 2px;
   }
   &__icon {
     width: 24px;
@@ -57,6 +60,16 @@
     font-size: 10px;
     line-height: 10px;
     color: $bg-99;
+  }
+}
+.navigation__el--active {
+  background: $bg-39;
+  border-radius: 4px;
+  & .navigation__icon {
+    background: $white-fd;
+  }
+  & .navigation__topic {
+    color: $white-fd;
   }
 }
 </style>

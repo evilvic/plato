@@ -32,6 +32,6 @@ export const queryData = async () => {
     });
     return resultData;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }
