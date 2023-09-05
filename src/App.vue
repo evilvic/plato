@@ -2,6 +2,7 @@
 import { onMounted } from 'vue'
 import { getSafeAreaInsets } from '@/plugins/SafeAreaPlugin'
 import { RouterView } from 'vue-router'
+import Navigation from '@/components/core/Navigation.vue'
 
 onMounted( async () => {
   const safeAreaInsets = await getSafeAreaInsets()
@@ -14,4 +15,5 @@ onMounted( async () => {
 
 <template>
   <RouterView />
+  <Navigation />
 </template>
