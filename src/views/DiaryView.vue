@@ -52,7 +52,7 @@ const getWaterIntake = async () => {
         v-for="el in data"
         :key="el.uuid"
       >
-        <span>{{ el.value }} ml</span>
+        <span class="card__qty">{{ el.value }} ml</span>
         <span class="card__bottom">
           {{ formatTimeToHHMM(el.startDate) }}
         </span>
@@ -86,6 +86,10 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  &__qty{
+    font-size: 16px;
+    font-weight: 700;
+  }
   &__bottom {
     background: $blue;
     width: 100%;
@@ -98,6 +102,7 @@ main {
     justify-content: center;
     align-items: center;
     font-size: 12px;
+    font-weight: 700;
   }
 }
 </style>

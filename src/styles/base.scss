@@ -1,3 +1,5 @@
+@import url(https://fonts.bunny.net/css?family=montserrat:100,200,300,400,500,600,700,800,900|nunito:400,700);
+
 @import '@/styles/variables.scss';
 
 /*  NOTE:  Reset styles */
@@ -9,6 +11,8 @@
   padding: 0;
   box-sizing: border-box;
   color: $white-fd;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
 }
 
 body {
