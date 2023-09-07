@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { requestHKAuthorization } from '@/plugins/HealthKitPlugin'
 import { queryData } from '@/plugins/HealthKitPlugin'
 import { formatTimeToHHMM } from '@/helpers/dayjs'
 import { ref, onMounted } from 'vue'
@@ -7,6 +8,7 @@ const loading = ref(false);
 const data = ref<any[]>([]);
 
 onMounted(() => {
+  requestHKAuthorization()
   getWaterIntake();
   // data.value = [
   // {
