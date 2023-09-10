@@ -10,9 +10,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: $white-fd;
   font-family: 'Nunito', sans-serif;
   font-weight: 400;
+  color: $white-fd;
 }
 
 body {
@@ -25,6 +25,18 @@ body {
   background-color: $bg-09;
 }
 
-p {
-  color: var($white-fd);
+input {
+  width: 100%;
+  height: 60px;
+  background: $bg-29;
+  border: none;
+  border-radius: 8px;
+}
+
+button {
+  width: 100%;
+  height: 60px;
+  background: $purple;
+  border: none;
+  border-radius: 50px;
 }

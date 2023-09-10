@@ -17,5 +17,5 @@ onMounted( async () => {
 
 <template>
   <RouterView />
-  <Navigation />
+  <Navigation v-if="$route.meta.requiresAuth"/>
 </template>

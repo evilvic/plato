@@ -148,7 +148,7 @@ h3::first-letter {
 .card {
   width: calc((100vw - 64px) / 3);
   height: calc((100vw - 64px) / 3);
-  background-color: $bg-29;
+  background: $bg-29;
   border-radius: 8px;
   position: relative;
   display: flex;
