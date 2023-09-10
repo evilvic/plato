@@ -29,9 +29,8 @@ const authService = {
     const { data, error } = await supabase
       .auth
       .getSession()
-
     if (error) throw error;
-    return data ? true : false
+    return data.session ? true : false
   },
 
 }
