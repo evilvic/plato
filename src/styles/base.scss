@@ -1,4 +1,4 @@
-@import url(https://fonts.bunny.net/css?family=montserrat:100,200,300,400,500,600,700,800,900|nunito:400,700);
+@import url(https://fonts.bunny.net/css?family=montserrat:600,700|nunito:400,700);
 
 @import '@/styles/variables.scss';
 
@@ -12,6 +12,7 @@
   box-sizing: border-box;
   font-family: 'Nunito', sans-serif;
   font-weight: 400;
+  font-size: 16px;
   color: $white-fd;
 }
 
@@ -28,9 +29,18 @@ body {
 input {
   width: 100%;
   height: 60px;
-  background: $bg-29;
   border: none;
   border-radius: 8px;
+  background: $bg-29;
+  padding: 12px;
+  color: $white-fd;
+  &::placeholder {
+    color: $white-7d;
+  }
+  &:focus {
+    outline: none;
+    border: 1px solid $white-9d;
+  }
 }
 
 button {
@@ -39,4 +49,7 @@ button {
   background: $purple;
   border: none;
   border-radius: 50px;
+  color: $bg-09;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
 }

@@ -2,11 +2,11 @@ import { supabase } from '@/helpers/supabase'
 
 const authService = {
   async sendOtp(email: string) {
-    const { data, error } = await supabase
+    const { error } = await supabase
       .auth
       .signInWithOtp({ email })
 
-    return { data, error }
+    if (error) throw error
   },
 
   async verifyOtp(email: string, token: string) {
