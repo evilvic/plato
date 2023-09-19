@@ -1,18 +1,24 @@
 <script setup lang="ts">
-import authService from '@/helpers/authService'
+  import { ref } from 'vue'
+  import { useRouter } from 'vue-router'
+  import { useSessionStore } from '@/stores/session'
+  import authService from '@/helpers/authService'
 
-import { ref } from 'vue'
+  const router = useRouter()
+  const session = useSessionStore()
 
-const email = ref<string>('')
+  const email = ref<string>('')
 
-const handleLogin = async () => {
-  console.log(email.value)
-  try {
-    await authService.sendOtp(email.value)
-  } catch (err) {
-    console.error(err)
+  const handleLogin = async () => {
+    console.log(email.value)
+    session.setEmail(email.value)
+    try {
+      await authService.sendOtp(email.value)
+      router.push('/otp')
+    } catch (err) {
+      console.error(err)
+    }
   }
-}
 </script>
 
 <template>
@@ -31,11 +37,11 @@ const handleLogin = async () => {
 </template>
 
 <style scoped lang="scss">
-.login {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-}
+  .login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
 </style>
