@@ -10,7 +10,7 @@ const handleSave = () => {
 </script>
 
 <template>
-  <div class="water-record">
+  <main class="water-record">
     <input
       type="number"
       placeholder="0"
@@ -21,5 +21,15 @@ const handleSave = () => {
     >
       Guardar
     </button>
-  </div>
+  </main>
 </template>
+
+<style scoped lang="scss">
+  .water-record {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+</style>

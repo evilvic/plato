@@ -3,6 +3,7 @@
     <button 
       class="navigation__el"
       :class="{'navigation__el--active': $route.name === 'diary'}"
+      @click="$router.push({name: 'diary'})"
     >
       <div class="navigation__icon"/>
       <span class="navigation__topic">Diario</span>
@@ -11,9 +12,13 @@
       <div class="navigation__icon" />
       <span class="navigation__topic">-</span>
     </button>
-    <button class="navigation__el">
+    <button 
+      class="navigation__el"
+      :class="{'navigation__el--active': $route.name === 'new'}"
+      @click="$router.push({name: 'new'})"
+    >
       <div class="navigation__icon" />
-      <span class="navigation__topic">-</span>
+      <span class="navigation__topic">Nuevo</span>
     </button>
     <button class="navigation__el">
       <div class="navigation__icon" />

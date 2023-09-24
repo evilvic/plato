@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import authService from '@/helpers/authService'
 import publicRoutes from '@/router/publicRoutes'
 import DiaryView from '@/views/DiaryView.vue'
+import WaterRecordView from '@/views/WaterRecordView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,6 +16,14 @@ const router = createRouter({
         requiresAuth: true
       }
     },
+    {
+      path: '/new',
+      name: 'new',
+      component: WaterRecordView,
+      meta: {
+        requiresAuth: true
+      }
+    }
   ]
 })
 
