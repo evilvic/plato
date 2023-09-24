@@ -30,6 +30,11 @@ export interface HealthKitPlugin {
     countReturn: number,
     resultData: SampleType[]
   }>
+  saveHKitSampleType: (options: {
+    date: string
+    sampleName: string
+    value: number
+  }) => Promise<void>
 }
 
 // ----- END  TS-DEFS -----

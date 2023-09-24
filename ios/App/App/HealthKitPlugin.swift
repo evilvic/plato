@@ -76,4 +76,40 @@ public class HealthKitPlugin: CAPPlugin {
         HealthKitHelper.healthStore.execute(query)
     }
 
+    @objc func saveHKitSampleType(_ call: CAPPluginCall) {
+        guard let _sampleName = call.options["sampleName"] as? String else {
+            return call.reject("Must provide sampleName")
+        }
+        guard let _value = call.options["value"] as? Double else {
+            return call.reject("Must provide value")
+        }
+        guard let dateString = call.options["date"] as? String else {
+            return call.reject("Must provide date")
+        }
+        
+        let _date = HealthKitHelper.getDateFromString(inputDate: dateString)
+        
+        switch _sampleName {
+        case "water":
+            guard let quantityType = HKObjectType.quantityType(forIdentifier: .dietaryWater) else {
+                return call.reject("Water Intake Type is not available in HealthKit")
+            }
+            let waterQuantity = HKQuantity(unit: HKUnit.literUnit(with: .milli), doubleValue: _value)
+            let waterIntakeSample = HKQuantitySample(type: quantityType, quantity: waterQuantity, start: _date, end: _date)
+            HealthKitHelper.healthStore.save(waterIntakeSample) { (success, error) in
+                if success {
+                    if let sampleData = HealthKitHelper.generateOutputForSingleSample(sampleName: _sampleName, sample: waterIntakeSample) {
+                        call.resolve(["sample": sampleData])
+                    } else {
+                        call.reject("Error generating sample data")
+                    }
+                } else {
+                    call.reject("Error saving water intake: \(String(describing: error?.localizedDescription))")
+                }
+            }
+        default:
+            call.reject("Unsupported sample type: \(_sampleName)")
+        }
+    }
+
 }

@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { saveData } from '@/plugins/HealthKitPlugin'
 
 const water = ref<number>(0)
 
 const handleSave = () => {
-  console.log(water.value)
+  saveData(water.value)
 }
 
 </script>

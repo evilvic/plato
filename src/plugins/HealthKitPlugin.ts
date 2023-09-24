@@ -35,3 +35,16 @@ export const queryData = async () => {
     console.error(error);
   }
 }
+
+export const saveData = async (value: number) => {
+  try {
+    const response = await HealthKit.saveHKitSampleType({
+      date: formatDateToISO8601(today),
+      sampleName: "water",
+      value: value,
+    });
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+}

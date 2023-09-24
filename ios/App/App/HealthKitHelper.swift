@@ -77,6 +77,40 @@ public class HealthKitHelper {
         return output
     }
 
+    public class func generateOutputForSingleSample(sampleName: String, sample: HKQuantitySample) -> [String: Any]? {
+    var unit: HKUnit?
+    var unitName: String?
+
+    // Determinar la unidad basada en el nombre de la muestra
+    if sampleName == "water" {
+        unit = HKUnit.literUnit(with: .milli)
+        unitName = "milliliter"
+    } else {
+        print("Error: unknown unit type")
+        return nil
+    }
+
+    // Calcular la duración entre las fechas de inicio y fin
+    let quantitySD: NSDate = sample.startDate as NSDate
+    let quantityED: NSDate = sample.endDate as NSDate
+    let quantityInterval = quantityED.timeIntervalSince(quantitySD as Date)
+    let quantitySecondsInAnHour: Double = 3600
+    let quantityHoursBetweenDates = quantityInterval / quantitySecondsInAnHour
+
+    // Crear y devolver el diccionario de salida
+    return [
+        "uuid": sample.uuid.uuidString,
+        "value": sample.quantity.doubleValue(for: unit!),
+        "unitName": unitName!,
+        "startDate": ISO8601DateFormatter().string(from: sample.startDate),
+        "endDate": ISO8601DateFormatter().string(from: sample.endDate),
+        "duration": quantityHoursBetweenDates,
+        "source": sample.sourceRevision.source.name,
+        "sourceBundleId": sample.sourceRevision.source.bundleIdentifier,
+    ]
+}
+
+
     public class func getDateFromString(inputDate: String) -> Date {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions =  [.withInternetDateTime, .withFractionalSeconds]
