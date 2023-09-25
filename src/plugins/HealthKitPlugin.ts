@@ -19,7 +19,7 @@ function formatDateToISO8601(date: string | number | Date): string {
   return new Date(date).toISOString();
 }
 
-export const queryData = async () => {
+export const queryData = async (sample: string) => {
   const today = new Date();
   const oneWeekAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
   try {
@@ -27,7 +27,7 @@ export const queryData = async () => {
       startDate: formatDateToISO8601(oneWeekAgo),
       endDate: formatDateToISO8601(today),
       limit: 25,
-      sampleName: "water",
+      sampleName: sample,
     });
     return resultData;
   } catch (error) {
