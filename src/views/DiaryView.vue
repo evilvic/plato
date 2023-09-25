@@ -91,15 +91,19 @@ const getWeight = async () => {
 //   data.value = groupByDate(water);
 // }
 
-const groupByDate = (waterData: HealthData[]): Record<string, HealthData[]> => {
+const groupByDate = (healthData: HealthData[]): Record<string, HealthData[]> => {
   const grouped: Record<string, HealthData[]> = {};
 
-  waterData.forEach(item => {
+  healthData.forEach(item => {
     const dateKey = formatDateToYYYYMMDD(item.startDate);
     if (!grouped[dateKey]) {
       grouped[dateKey] = [];
     }
     grouped[dateKey].push(item);
+  });
+
+  Object.keys(grouped).forEach(date => {
+    grouped[date].sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
   });
 
   const sortedDates = Object.keys(grouped).sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
