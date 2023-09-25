@@ -18,6 +18,8 @@ public class HealthKitHelper {
             switch item {
             case "water":
                 types.insert(HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryWater)!)
+            case "weight":
+                types.insert(HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!)
             default:
                 print("no match in case: " + item)
             }
@@ -29,6 +31,8 @@ public class HealthKitHelper {
         switch sampleName {
         case "water":
             return HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryWater)!
+        case "weight":
+            return HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!
         default:
             return nil
         }
@@ -49,6 +53,9 @@ public class HealthKitHelper {
                 if sampleName == "water" {
                     unit = HKUnit.literUnit(with: .milli)
                     unitName = "milliliter"
+                } else if sampleName == "weight" {
+                    unit = HKUnit.gramUnit(with: .kilo)
+                    unitName = "kilogram"
                 } else {
                     print("Error: unknown unit type")
                 }
@@ -85,6 +92,9 @@ public class HealthKitHelper {
     if sampleName == "water" {
         unit = HKUnit.literUnit(with: .milli)
         unitName = "milliliter"
+    } else if sampleName == "weight" {
+        unit = HKUnit.gramUnit(with: .kilo)
+        unitName = "kilogram"
     } else {
         print("Error: unknown unit type")
         return nil
