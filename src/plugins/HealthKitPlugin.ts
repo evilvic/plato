@@ -1,5 +1,6 @@
 import { registerPlugin } from '@capacitor/core'
 import type { HealthKitPlugin } from '@/plugins/HealthKitPlugin.types'
+import { WATER_DATA, WEIGHT_DATA } from '@/helpers/webData'
 
 const HealthKit = registerPlugin<HealthKitPlugin>('HealthKitPlugin')
 
@@ -32,6 +33,7 @@ export const queryData = async (sample: string) => {
     return resultData;
   } catch (error) {
     console.error(error);
+    return sample === "water" ? WATER_DATA : WEIGHT_DATA;
   }
 }
 

@@ -37,7 +37,7 @@
 .navigation {
   width: 100%;
   height: calc(48px + var(--safe-area-inset-bottom));
-  background: rgba(41, 41, 41, 0.9);
+  background: rgba(41, 41, 41, 0.75);
   backdrop-filter: blur(10px);
   position: fixed;
   bottom: 0;

@@ -25,7 +25,7 @@ onMounted(() => {
   // requestHKAuthorization()
   getWaterIntake();
   getWeight();
-  // getHarcodedWater();
+
 })
 
 const getWaterIntake = async () => {
@@ -54,42 +54,6 @@ const getWeight = async () => {
   loading.value = false;
 }
 
-// const getHarcodedWater = () => {
-//   const water = [
-//     {
-//       "value":400,
-//       "source":"Health",
-//       "unitName":"milliliter",
-//       "uuid":"25024F31-3517-42BF-ADE8-72FFDF74D447",
-//       "endDate":"2023-08-31T18:16:00Z",
-//       "duration":0,
-//       "sourceBundleId":"com.apple.Health",
-//       "startDate":"2023-09-07T18:16:00Z"
-//     },
-//     {
-//       "value":200,
-//       "source":"Health",
-//       "unitName":"milliliter",
-//       "uuid":"25024F31-3517-42BF-ADE8-72FFDF74D447",
-//       "endDate":"2023-08-31T18:16:00Z",
-//       "duration":0,
-//       "sourceBundleId":"com.apple.Health",
-//       "startDate":"2023-09-05T18:16:00Z"
-//     },
-//     {
-//       "value":350,
-//       "source":"Health",
-//       "unitName":"milliliter",
-//       "uuid":"25024F31-3517-42BF-ADE8-72FFDF74D447",
-//       "endDate":"2023-08-31T18:16:00Z",
-//       "duration":0,
-//       "sourceBundleId":"com.apple.Health",
-//       "startDate":"2023-09-06T18:16:00Z"
-//     },
-//   ]
-
-//   data.value = groupByDate(water);
-// }
 
 const groupByDate = (healthData: HealthData[]): Record<string, HealthData[]> => {
   const grouped: Record<string, HealthData[]> = {};
@@ -129,18 +93,7 @@ const addToDataByDate = (formattedData: HealthData[]) => {
   const orderedData = groupByDate(Object.values(data.value).flat());
   data.value = orderedData;
 }
-/*
-{
-  "value":372,
-  "source":"Health",
-  "unitName":"milliliter",
-  "uuid":"25024F31-3517-42BF-ADE8-72FFDF74D447",
-  "endDate":"2023-08-31T18:16:00Z",
-  "duration":0,
-  "sourceBundleId":"com.apple.Health",
-  "startDate":"2023-08-31T18:16:00Z"
-}
-*/
+
 </script>
 
 <template>
