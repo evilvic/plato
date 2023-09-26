@@ -3,7 +3,8 @@ import { onMounted } from 'vue'
 import { getSafeAreaInsets } from '@/plugins/SafeAreaPlugin'
 import { activateSuppressLongPress } from '@/plugins/LongPressPlugin'
 import { RouterView } from 'vue-router'
-import Navigation from '@/components/core/Navigation.vue'
+import NavBar from '@/components/core/NavBar.vue'
+import TabBar from '@/components/core/TabBar.vue'
 
 onMounted( async () => {
   const safeAreaInsets = await getSafeAreaInsets()
@@ -16,6 +17,7 @@ onMounted( async () => {
 </script>
 
 <template>
+  <NavBar v-if="$route.meta.requiresAuth" />
   <RouterView />
-  <Navigation v-if="$route.meta.requiresAuth"/>
+  <TabBar v-if="$route.meta.requiresAuth" />
 </template>

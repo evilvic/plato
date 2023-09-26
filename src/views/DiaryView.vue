@@ -128,6 +128,10 @@ const addToDataByDate = (formattedData: HealthData[]) => {
 
 main {
   padding: 0 16px;
+  padding-top: calc(60px + var(--safe-area-inset-top));
+  padding-bottom: calc(48px + var(--safe-area-inset-bottom) + 60px);
+  height: 100%;
+  overflow-y: auto;
 }
 h3 {
   margin: 12px 0 6px;

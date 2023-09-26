@@ -38,7 +38,7 @@
   width: 100%;
   height: calc(48px + var(--safe-area-inset-bottom));
   background: rgba(41, 41, 41, 0.75);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
   position: fixed;
   bottom: 0;
   display: flex;

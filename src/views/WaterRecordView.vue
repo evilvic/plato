@@ -26,11 +26,16 @@ const handleSave = () => {
 </template>
 
 <style scoped lang="scss">
+main {
+  padding: 0 16px;
+  padding-top: calc(60px + var(--safe-area-inset-top));
+  padding-bottom: calc(48px + var(--safe-area-inset-bottom) + 60px);
+  height: 100%;
+  overflow-y: auto;
+}
   .water-record {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 16px;
   }
 </style>
