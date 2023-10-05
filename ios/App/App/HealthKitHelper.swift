@@ -20,6 +20,8 @@ public class HealthKitHelper {
                 types.insert(HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryWater)!)
             case "weight":
                 types.insert(HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!)
+            case "workout":
+                types.insert(HKWorkoutType.workoutType())
             default:
                 print("no match in case: " + item)
             }
@@ -33,6 +35,8 @@ public class HealthKitHelper {
             return HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryWater)!
         case "weight":
             return HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!
+        case "workout":
+            return HKWorkoutType.workoutType()
         default:
             return nil
         }
