@@ -25,6 +25,7 @@ onMounted(() => {
   // requestHKAuthorization()
   getWaterIntake();
   getWeight();
+  getWorkouts();
 
 })
 
@@ -52,6 +53,11 @@ const getWeight = async () => {
 
   addToDataByDate(formattedData);
   loading.value = false;
+}
+
+const getWorkouts = async () => {
+  const workoutData = await queryData("workout") || [];
+  console.log(workoutData);
 }
 
 

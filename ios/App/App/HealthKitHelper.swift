@@ -106,7 +106,6 @@ public class HealthKitHelper {
                     "duration": workoutHoursBetweenDates,
                     "source": sample.sourceRevision.source.name,
                     "sourceBundleId": sample.sourceRevision.source.bundleIdentifier,
-                    "device": getDeviceInformation(device: sample.device),
                     "workoutActivityId": sample.workoutActivityType.rawValue,
                     "workoutActivityName": returnWorkoutActivityTypeValueDictionnary(activityType: sample.workoutActivityType),
                     "totalEnergyBurned": TEBData!, // kilocalorie

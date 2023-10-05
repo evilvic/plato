@@ -135,3 +135,62 @@ export const WEIGHT_DATA = [
   }
 ]
 
+export const WORKOUT_DATA = [
+  {
+    "totalSwimmingStrokeCount":-1,
+    "uuid":"C9A305D9-3127-4969-A8CB-0FA67E6C4413",
+    "workoutActivityName":"Walking",
+    "endDate":"2023-10-02T13:13:57Z",
+    "totalFlightsClimbed":-1,
+    "duration":65.15320259928703,
+    "startDate":"2023-10-02T12:08:48Z",
+    "source":"Víctor’s Apple Watch",
+    "sourceBundleId":"com.apple.health.6CC39619-592F-4FE0-B6F0-4AA1C9C0F449",
+    "totalEnergyBurned":352.7812173567714,
+    "workoutActivityId":52,
+    "totalDistance":4897.53715452888
+  },
+  {
+    "workoutActivityId":52,
+    "workoutActivityName":"Walking",
+    "totalDistance":4898.463038457092,
+    "source":"Víctor’s Apple Watch",
+    "uuid":"686D18B1-099D-4775-88BC-6C9CA06CD1D2",
+    "totalEnergyBurned":329.0589999999977,
+    "totalSwimmingStrokeCount":-1,
+    "duration":69.78351641694705,
+    "startDate":"2023-10-03T12:13:31Z",
+    "sourceBundleId":"com.apple.health.6CC39619-592F-4FE0-B6F0-4AA1C9C0F449",
+    "totalFlightsClimbed":-1,
+    "endDate":"2023-10-03T13:23:18Z"
+  },
+  {
+    "totalDistance":4950.975203122944,
+    "totalEnergyBurned":394.1528882390537,
+    "workoutActivityName":"Walking",
+    "totalFlightsClimbed":-1,
+    "totalSwimmingStrokeCount":-1,
+    "endDate":"2023-10-04T13:19:20Z",
+    "duration":69.03051661650339,
+    "source":"Víctor’s Apple Watch",
+    "uuid":"6EC90BBE-78DE-4F1C-8201-9D61BE026227",
+    "startDate":"2023-10-04T12:10:18Z",
+    "sourceBundleId":"com.apple.health.6CC39619-592F-4FE0-B6F0-4AA1C9C0F449",
+    "workoutActivityId":52
+  },
+  {
+    "sourceBundleId":"com.apple.health.6CC39619-592F-4FE0-B6F0-4AA1C9C0F449",
+    "duration":26.7147378663222,
+    "workoutActivityId":52,
+    "workoutActivityName":"Walking",
+    "totalSwimmingStrokeCount":-1,
+    "totalDistance":1797.4767084824562,
+    "totalEnergyBurned":145.40100532634932,
+    "startDate":"2023-10-05T12:02:01Z",
+    "uuid":"AAEB8433-2A84-471F-BBD8-C5B5CB141042",
+    "totalFlightsClimbed":-1,
+    "source":"Víctor’s Apple Watch",
+    "endDate":"2023-10-05T12:28:44Z"
+  }
+]
+
