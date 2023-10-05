@@ -4,8 +4,8 @@ import { queryData } from '@/plugins/HealthKitPlugin'
 import { formatTimeToHHMM, formatDateToYYYYMMDD, formatDateWithTodayAndYesterday } from '@/helpers/dayjs'
 import { ref, computed, onMounted } from 'vue'
 
-interface HealthData {
-  dataType: 'water' | 'weight';
+interface BaseHealthData {
+  dataType: 'water' | 'weight' | 'workout';
   value: number;
   source: string;
   unitName: string;
@@ -15,6 +15,17 @@ interface HealthData {
   sourceBundleId: string;
   startDate: string;
 }
+
+interface WorkoutHealthData extends BaseHealthData {
+  workoutActivityName?: string;
+  totalDistance?: number;
+  totalEnergyBurned?: number;
+  totalFlightsClimbed?: number;
+  totalSwimmingStrokeCount?: number;
+  workoutActivityId?: number;
+}
+
+type HealthData = BaseHealthData | WorkoutHealthData;
 
 const loading = ref<boolean>(false);
 const data = ref<Record<string, HealthData[]>>({});
@@ -30,34 +41,64 @@ onMounted(() => {
 })
 
 const getWaterIntake = async () => {
-  const waterData = await queryData("water") || [];
+  const waterData = await queryData("water") as HealthData[] || [];
 
-  const formattedData = waterData.map(entry => ({
-    ...entry,
-    dataType: 'water' as const,
+  const formattedData: HealthData[] = waterData.map(entry => ({
+    dataType: 'water',
+    value: entry.value,
+    source: entry.source,
     unitName: 'ml',
-  }))
+    uuid: entry.uuid,
+    endDate: entry.endDate,
+    duration: entry.duration,
+    sourceBundleId: entry.sourceBundleId,
+    startDate: entry.startDate,
+  }));
 
   addToDataByDate(formattedData);
   loading.value = false;
 }
 
 const getWeight = async () => {
-  const weightData = await queryData("weight") || [];
+  const weightData = await queryData("weight") as HealthData[] || [];
 
-  const formattedData = weightData.map(entry => ({
-    ...entry,
-    dataType: 'weight' as const,
+  const formattedData: HealthData[] = weightData.map(entry => ({
+    dataType: 'weight',
+    value: entry.value,
+    source: entry.source,
     unitName: 'kg',
-  }))
+    uuid: entry.uuid,
+    endDate: entry.endDate,
+    duration: entry.duration,
+    sourceBundleId: entry.sourceBundleId,
+    startDate: entry.startDate,
+  }));
 
   addToDataByDate(formattedData);
   loading.value = false;
 }
 
 const getWorkouts = async () => {
-  const workoutData = await queryData("workout") || [];
+  const workoutData = await queryData("workout") as HealthData[] || [];
   console.log(workoutData);
+
+  const formattedData: HealthData[] = workoutData.map(entry => 
+  'workoutActivityName' in entry ? {
+    dataType: 'workout',
+    value: entry.workoutActivityName === "Walking" ? (entry.totalDistance ? entry.totalDistance / 1000 : -1) : -1, 
+    unitName: entry.workoutActivityName === "Walking" ? 'km' : '',
+    uuid: entry.uuid,
+    endDate: entry.endDate,
+    duration: entry.duration,
+    source: entry.source,
+    sourceBundleId: entry.sourceBundleId,
+    startDate: entry.startDate,
+    workoutActivityName: entry.workoutActivityName
+  } : entry
+);
+
+  addToDataByDate(formattedData);
+  loading.value = false;
 }
 
 
@@ -105,21 +146,19 @@ const addToDataByDate = (formattedData: HealthData[]) => {
 <template>
   <main>
     <div v-for="(entries, date) in castedData" :key="date">
-      <h3>  {{ formatDateWithTodayAndYesterday(date) }} </h3>
-      <ul
-        class="container"
-        v-if="!loading && data"
-      >
-        <li
-          class="card"
-          v-for="entry in entries"
-          :key="entry.uuid"
-        >
-          <span class="card__qty">{{ entry.value }} {{ entry.unitName }}</span>
-          <span 
-            class="card__bottom"
-            :class="{'card__bottom--weight': entry.dataType === 'weight'}"
-          >
+      <h3> {{ formatDateWithTodayAndYesterday(date) }} </h3>
+      <ul class="container" v-if="!loading && data">
+        <li class="card" v-for="entry in entries" :key="entry.uuid">
+          <!-- Condición: Si es entrenamiento y caminata, muestra distancia. De lo contrario, muestra como antes. -->
+          <span class="card__qty">
+            {{ entry.dataType === 'workout' && 'workoutActivityName' in entry && entry.workoutActivityName === "Walking" 
+               ? (Math.floor(entry.value * 100) / 100).toFixed(2) + ' ' + entry.unitName
+               : entry.value + ' ' + entry.unitName }}
+          </span>
+          <span class="card__bottom" :class="{
+            'card__bottom--weight': entry.dataType === 'weight',
+            'card__bottom--workout': entry.dataType === 'workout'
+          }">
             {{ formatTimeToHHMM(entry.startDate) }}
           </span>
         </li>
@@ -179,6 +218,9 @@ h3::first-letter {
     font-weight: 700;
     &--weight {
       background: $red;
+    }
+    &--workout {
+      background: $green;
     }
   }
 }

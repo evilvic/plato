@@ -21,10 +21,10 @@ export const WATER_DATA = [
     "unitName": "milliliter"
   },
   {
-    "endDate": "2023-09-23T18:24:00Z",
+    "endDate": "2023-10-03T18:24:00Z",
     "unitName": "milliliter",
     "source": "Health",
-    "startDate": "2023-09-23T18:24:00Z",
+    "startDate": "2023-10-03T18:24:00Z",
     "uuid": "55826D7B-F22A-41A5-87A5-A5EFDFBBCFC0",
     "duration": 0,
     "sourceBundleId": "com.apple.Health",
@@ -33,8 +33,8 @@ export const WATER_DATA = [
   {
     "unitName": "milliliter",  
     "uuid": "B8D6D87B-3B10-48E0-A992-29E67F45EA25",
-    "endDate": "2023-09-24T20:31:44Z",
-    "startDate": "2023-09-24T20:31:44Z",
+    "endDate": "2023-10-04T20:31:44Z",
+    "startDate": "2023-10-04T20:31:44Z",
     "sourceBundleId": "fail.vic.plato",
     "source": "plato",
     "value": 406,
@@ -43,42 +43,42 @@ export const WATER_DATA = [
   {
     "unitName": "milliliter",
     "uuid": "FDA0A1D2-F31D-491E-A611-693AC6DFF456",
-    "startDate": "2023-09-24T22:59:14Z",
+    "startDate": "2023-10-04T22:59:14Z",
     "source": "plato",
-    "endDate": "2023-09-24T22:59:14Z",
+    "endDate": "2023-10-04T22:59:14Z",
     "value": 423,
     "sourceBundleId": "fail.vic.plato",
     "duration": 0
   },
   {
     "value": 377,
-    "startDate": "2023-09-25T02:38:03Z",
+    "startDate": "2023-10-05T02:38:03Z",
     "duration": 0,
     "uuid": "50F24840-413F-4840-98E9-BEEE286C6F09",
     "sourceBundleId": "fail.vic.plato",
     "source": "plato",
     "unitName": "milliliter",
-    "endDate": "2023-09-25T02:38:03Z"
+    "endDate": "2023-10-05T02:38:03Z"
   },
   {
-    "endDate": "2023-09-25T14:52:03Z",
+    "endDate": "2023-10-05T14:52:03Z",
     "sourceBundleId": "fail.vic.plato",
     "unitName": "milliliter",
     "duration": 0,
     "source": "plato",
     "value": 430,
     "uuid": "8E9828B8-545E-49E1-9B59-F3A9EDE2A130",
-    "startDate": "2023-09-25T14:52:03Z"
+    "startDate": "2023-10-05T14:52:03Z"
   },
   {
     "uuid": "7BF76074-320C-4C10-A152-00FA80D59133",
     "sourceBundleId": "fail.vic.plato",
     "value": 371,
     "source": "plato",
-    "startDate": "2023-09-25T22:44:26Z",
+    "startDate": "2023-10-05T22:44:26Z",
     "duration": 0,
     "unitName": "milliliter",
-    "endDate": "2023-09-25T22:44:26Z"
+    "endDate": "2023-10-05T22:44:26Z"
   }
 ]
 
@@ -105,19 +105,19 @@ export const WEIGHT_DATA = [
   },
   {
     "unitName": "kilogram",
-    "startDate": "2023-09-23T14:51:00Z",
+    "startDate": "2023-10-03T14:51:00Z",
     "duration": 0,
     "source": "Health",
     "uuid": "65610A04-EA3A-4D7A-97C3-B8479CD49AD9",
     "value": 99.3,
     "sourceBundleId": "com.apple.Health",
-    "endDate": "2023-09-23T14:51:00Z"
+    "endDate": "2023-10-03T14:51:00Z"
   },
   {
-    "startDate": "2023-09-24T15:22:00Z",
+    "startDate": "2023-10-04T15:22:00Z",
     "source": "Health",
     "value": 98.8,
-    "endDate": "2023-09-24T15:22:00Z",
+    "endDate": "2023-10-04T15:22:00Z",
     "unitName": "kilogram",
     "duration": 0,
     "uuid": "ADE8EC8F-0F2D-43AE-96BE-BEDE340DB009",
@@ -125,9 +125,9 @@ export const WEIGHT_DATA = [
   },
   {
     "value": 100.2,
-    "startDate": "2023-09-25T13:45:00Z",
+    "startDate": "2023-10-05T13:45:00Z",
     "unitName": "kilogram",
-    "endDate": "2023-09-25T13:45:00Z",
+    "endDate": "2023-10-05T13:45:00Z",
     "sourceBundleId": "com.apple.Health",
     "source": "Health",
     "uuid": "57F9BE23-9D64-4D0A-9381-7247C3FC45D6",
