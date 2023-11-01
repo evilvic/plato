@@ -37,12 +37,12 @@ export const queryData = async (sample: string) => {
   }
 }
 
-export const saveData = async (value: number) => {
+export const saveData = async (value: number, sample: string) => {
   const today = new Date();
   try {
     const response = await HealthKit.saveHKitSampleType({
       date: formatDateToISO8601(today),
-      sampleName: "water",
+      sampleName: sample,
       value: value,
     });
     console.log(response);
@@ -50,3 +50,4 @@ export const saveData = async (value: number) => {
     console.error(error);
   }
 }
+
