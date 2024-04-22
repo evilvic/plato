@@ -33,7 +33,7 @@ const data = ref<Record<string, HealthData[]>>({});
 const castedData = computed(() => data.value as Record<string, HealthData[]>);
 
 onMounted(() => {
-  // requestHKAuthorization()
+  requestHKAuthorization()
   getWaterIntake();
   getWeight();
   getWorkouts();
@@ -85,8 +85,8 @@ const getWorkouts = async () => {
   const formattedData: HealthData[] = workoutData.map(entry => 
   'workoutActivityName' in entry ? {
     dataType: 'workout',
-    value: entry.workoutActivityName === "Walking" ? (entry.totalDistance ? entry.totalDistance / 1000 : -1) : -1, 
-    unitName: entry.workoutActivityName === "Walking" ? 'km' : '',
+    value: (entry.totalDistance ? entry.totalDistance / 1000 : -1), 
+    unitName: entry.workoutActivityName === "Walking" ? 'km' : 'km',
     uuid: entry.uuid,
     endDate: entry.endDate,
     duration: entry.duration,
@@ -149,11 +149,14 @@ const addToDataByDate = (formattedData: HealthData[]) => {
       <h3> {{ formatDateWithTodayAndYesterday(date) }} </h3>
       <ul class="container" v-if="!loading && data">
         <li class="card" v-for="entry in entries" :key="entry.uuid">
-          <!-- Condición: Si es entrenamiento y caminata, muestra distancia. De lo contrario, muestra como antes. -->
+          <!-- Condición actualizada: Si es entrenamiento y es caminata o nado, muestra distancia. De lo contrario, muestra como antes. -->
           <span class="card__qty">
-            {{ entry.dataType === 'workout' && 'workoutActivityName' in entry && entry.workoutActivityName === "Walking" 
-               ? (Math.floor(entry.value * 100) / 100).toFixed(2) + ' ' + entry.unitName
-               : entry.value + ' ' + entry.unitName }}
+            {{
+              entry.dataType === 'workout' && 'workoutActivityName' in entry &&
+              (entry.workoutActivityName === "Walking" || entry.workoutActivityName === "Other")
+                ? (Math.floor(entry.value * 100) / 100).toFixed(2) + ' ' + entry.unitName
+                : entry.value + ' ' + entry.unitName
+            }}
           </span>
           <span class="card__bottom" :class="{
             'card__bottom--weight': entry.dataType === 'weight',
@@ -166,6 +169,7 @@ const addToDataByDate = (formattedData: HealthData[]) => {
     </div>
   </main>
 </template>
+
 
 
 <style scoped lang="scss">

@@ -137,6 +137,20 @@ export const WEIGHT_DATA = [
 
 export const WORKOUT_DATA = [
   {
+    "totalSwimmingStrokeCount": 103,
+    "source": "Víctor’s Apple Watch",
+    "totalDistance": 850,
+    "totalFlightsClimbed": -1,
+    "duration": 44.712145233154295,
+    "workoutActivityId": 46,
+    "workoutActivityName": "Other",
+    "endDate": "2024-04-17T01:50:34Z",
+    "sourceBundleId": "com.apple.health.6CC39619-592F-4FE0-B6F0-4AA1C9C0F449",
+    "uuid": "768EE1A5-3678-45C0-AF4A-FD57426536BF",
+    "totalEnergyBurned": 295.4187403874031,
+    "startDate": "2024-04-17T01:05:51Z"
+  },
+  {
     "totalSwimmingStrokeCount":-1,
     "uuid":"C9A305D9-3127-4969-A8CB-0FA67E6C4413",
     "workoutActivityName":"Walking",
