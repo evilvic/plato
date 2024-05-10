@@ -25,6 +25,8 @@ public class CloudKitPlugin: CAPPlugin {
             record.setValue(value, forKey: key)
         }
         
+        print("Using default container: \(CKContainer.default().containerIdentifier ?? "Unknown Container")")
+        
         CKContainer.default().publicCloudDatabase.save(record) { savedRecord, error in
             if let error = error {
                 call.reject("Error saving record: \(error.localizedDescription)")

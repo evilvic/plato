@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { saveData } from '@/plugins/HealthKitPlugin'
+import { createRecord } from '@/plugins/CloudKitPlugin';
 
 const weight = ref<number | null>(null)
 const water = ref<number | null>(null)
@@ -15,6 +16,10 @@ const handleSaveWater = () => {
   if (water.value !== null) {
     saveData(water.value, 'water')
   }
+}
+
+const handleSaveFood = () => {
+  createRecord()
 }
 
 </script>
@@ -42,6 +47,10 @@ const handleSaveWater = () => {
       @click="handleSaveWater"
     >
       Guardar agua
+    </button>
+
+    <button @click="handleSaveFood">
+      Guardar comida
     </button>
 
   </main>
