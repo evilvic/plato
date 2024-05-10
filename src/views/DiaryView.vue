@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { requestHKAuthorization } from '@/plugins/HealthKitPlugin'
 import { queryData } from '@/plugins/HealthKitPlugin'
+import { fetchRecords } from '@/plugins/CloudKitPlugin'
 import { formatTimeToHHMM, formatDateToYYYYMMDD, formatDateWithTodayAndYesterday } from '@/helpers/dayjs'
 import { ref, computed, onMounted } from 'vue'
+import { get } from 'http'
 
 interface BaseHealthData {
   dataType: 'water' | 'weight' | 'workout';
@@ -37,7 +39,7 @@ onMounted(() => {
   getWaterIntake();
   getWeight();
   getWorkouts();
-
+  fetchRecords();
 })
 
 const getWaterIntake = async () => {

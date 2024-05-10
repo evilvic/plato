@@ -41,5 +41,41 @@ public class CloudKitPlugin: CAPPlugin {
                 call.resolve()
             }
         }
+  }
+
+  @objc func fetchRecords(_ call: CAPPluginCall) {
+        guard let recordType = call.options["recordType"] as? String else {
+            return call.reject("Must provide recordType")
+        }
+        
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: recordType, predicate: predicate)
+        
+        CKContainer.default().publicCloudDatabase.perform(query, inZoneWith: nil) { records, error in
+            if let error = error {
+                print("Error fetching records: \(error.localizedDescription)")
+                call.reject("Error fetching records: \(error.localizedDescription)")
+                return
+            }
+            
+            if let records = records {
+                let recordData = records.map { record -> [String: Any] in
+                    var data = [String: Any]()
+                    for key in record.allKeys() {
+                        data[key] = record[key]
+                    }
+                    return data
+                }
+                
+                call.resolve([
+                    "records": recordData
+                ])
+            } else {
+                print("No records found")
+                call.resolve([
+                    "records": []
+                ])
+            }
+        }
     }
 }

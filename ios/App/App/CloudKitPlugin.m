@@ -10,4 +10,5 @@
 
 CAP_PLUGIN(CloudKitPlugin, "CloudKitPlugin",
     CAP_PLUGIN_METHOD(createRecord, CAPPluginReturnPromise);
+    CAP_PLUGIN_METHOD(fetchRecords, CAPPluginReturnPromise);
 )
