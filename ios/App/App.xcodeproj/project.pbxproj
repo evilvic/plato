@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C5535082BED9637003BDF51 /* CloudKitPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5535072BED9637003BDF51 /* CloudKitPlugin.swift */; };
+		1C55350A2BED9AF5003BDF51 /* CloudKitPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5535092BED9AF5003BDF51 /* CloudKitPlugin.m */; };
 		1C6579BC2AA7B89E002F7CC3 /* SuppressLongPressPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6579BB2AA7B89E002F7CC3 /* SuppressLongPressPlugin.swift */; };
 		1C6579BE2AA7D855002F7CC3 /* SuppressLongPressPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6579BD2AA7D855002F7CC3 /* SuppressLongPressPlugin.m */; };
 		1C99A7342A8318AD004014F1 /* SafeAreaPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C99A7332A8318AD004014F1 /* SafeAreaPlugin.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C5535072BED9637003BDF51 /* CloudKitPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitPlugin.swift; sourceTree = "<group>"; };
+		1C5535092BED9AF5003BDF51 /* CloudKitPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CloudKitPlugin.m; sourceTree = "<group>"; };
 		1C6579BB2AA7B89E002F7CC3 /* SuppressLongPressPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuppressLongPressPlugin.swift; sourceTree = "<group>"; };
 		1C6579BD2AA7D855002F7CC3 /* SuppressLongPressPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuppressLongPressPlugin.m; sourceTree = "<group>"; };
 		1C99A7332A8318AD004014F1 /* SafeAreaPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaPlugin.swift; sourceTree = "<group>"; };
@@ -106,6 +110,8 @@
 				1CA042B32A832F5A00313963 /* HealthKitHelper.swift */,
 				1C6579BB2AA7B89E002F7CC3 /* SuppressLongPressPlugin.swift */,
 				1C6579BD2AA7D855002F7CC3 /* SuppressLongPressPlugin.m */,
+				1C5535072BED9637003BDF51 /* CloudKitPlugin.swift */,
+				1C5535092BED9AF5003BDF51 /* CloudKitPlugin.m */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -237,9 +243,11 @@
 				1CA042B02A832E8300313963 /* HealthKitPlugin.swift in Sources */,
 				1C99A7342A8318AD004014F1 /* SafeAreaPlugin.swift in Sources */,
 				1CA042B22A832F0400313963 /* HealthKitPlugin.m in Sources */,
+				1C55350A2BED9AF5003BDF51 /* CloudKitPlugin.m in Sources */,
 				1C6579BE2AA7D855002F7CC3 /* SuppressLongPressPlugin.m in Sources */,
 				1CA042B42A832F5A00313963 /* HealthKitHelper.swift in Sources */,
 				504EC3081FED79650016851F /* AppDelegate.swift in Sources */,
+				1C5535082BED9637003BDF51 /* CloudKitPlugin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
