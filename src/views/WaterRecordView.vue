@@ -5,6 +5,7 @@ import { createRecord } from '@/plugins/CloudKitPlugin';
 
 const weight = ref<number | null>(null)
 const water = ref<number | null>(null)
+const food = ref<string>('')
 
 const handleSaveWeight = () => {
   if (weight.value !== null) {
@@ -19,7 +20,10 @@ const handleSaveWater = () => {
 }
 
 const handleSaveFood = () => {
-  createRecord()
+  console.log(food.value)
+  if (food.value !== '') {
+    createRecord(food.value)
+  }
 }
 
 </script>
@@ -48,6 +52,7 @@ const handleSaveFood = () => {
     >
       Guardar agua
     </button>
+    <textarea v-model="food" />
 
     <button @click="handleSaveFood">
       Guardar comida

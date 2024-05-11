@@ -13,11 +13,11 @@ export interface CloudKitPlugin {
 
 const CloudKit = registerPlugin<CloudKitPlugin>('CloudKitPlugin')
 
-export const createRecord = async () => {
+export const createRecord = async (description: string) => {
   try {
       await CloudKit.createRecord({ 
           recordType: 'FoodEntry', 
-          fields: { description: 'Apple' }
+          fields: { description }
       });
       console.log('Record created successfully');
   } catch (error) {

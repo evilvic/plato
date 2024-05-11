@@ -4,7 +4,6 @@ import { queryData } from '@/plugins/HealthKitPlugin'
 import { fetchRecords } from '@/plugins/CloudKitPlugin'
 import { formatTimeToHHMM, formatDateToYYYYMMDD, formatDateWithTodayAndYesterday } from '@/helpers/dayjs'
 import { ref, computed, onMounted } from 'vue'
-import { get } from 'http'
 
 interface BaseHealthData {
   dataType: 'water' | 'weight' | 'workout';

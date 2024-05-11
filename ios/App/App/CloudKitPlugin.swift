@@ -27,7 +27,7 @@ public class CloudKitPlugin: CAPPlugin {
         
         print("Using default container: \(CKContainer.default().containerIdentifier ?? "Unknown Container")")
         
-        CKContainer.default().publicCloudDatabase.save(record) { savedRecord, error in
+        CKContainer.default().privateCloudDatabase.save(record) { savedRecord, error in
             if let error = error {
                 call.reject("Error saving record: \(error.localizedDescription)")
                 return
@@ -51,7 +51,7 @@ public class CloudKitPlugin: CAPPlugin {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: recordType, predicate: predicate)
         
-        CKContainer.default().publicCloudDatabase.perform(query, inZoneWith: nil) { records, error in
+        CKContainer.default().privateCloudDatabase.perform(query, inZoneWith: nil) { records, error in
             if let error = error {
                 print("Error fetching records: \(error.localizedDescription)")
                 call.reject("Error fetching records: \(error.localizedDescription)")
@@ -63,6 +63,9 @@ public class CloudKitPlugin: CAPPlugin {
                     var data = [String: Any]()
                     for key in record.allKeys() {
                         data[key] = record[key]
+                    }
+                    if let creationDate = record.creationDate {
+                        data["creationDate"] = ISO8601DateFormatter().string(from: creationDate)
                     }
                     return data
                 }
