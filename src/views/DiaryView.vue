@@ -6,7 +6,7 @@ import { formatTimeToHHMM, formatDateToYYYYMMDD, formatDateWithTodayAndYesterday
 import { ref, computed, onMounted } from 'vue'
 
 interface BaseHealthData {
-  dataType: 'water' | 'weight' | 'workout';
+  dataType: 'water' | 'weight' | 'workout' | 'cloudKitEntry';
   value: number;
   source: string;
   unitName: string;
@@ -38,7 +38,7 @@ onMounted(() => {
   getWaterIntake();
   getWeight();
   getWorkouts();
-  fetchRecords();
+  getFood();
 })
 
 const getWaterIntake = async () => {
@@ -102,6 +102,32 @@ const getWorkouts = async () => {
   loading.value = false;
 }
 
+const getFood = async () => {
+  try {
+    const records = await fetchRecords();
+    console.log('Fetched records from CloudKit:', records);
+
+    const formattedData: HealthData[] = records.map(entry => ({
+      dataType: 'cloudKitEntry',
+      value: 1,
+      unitName: 'meal',
+      uuid: (entry as { uuid: string }).uuid,
+      startDate: entry.creationDate,
+      endDate: entry.creationDate,
+      source: 'CloudKit',
+      sourceBundleId: 'fail.vic,plato',
+      duration: 0,
+    }));
+
+    addToDataByDate(formattedData);
+    loading.value = false;
+  } catch (error) {
+    console.error('Failed to fetch records from CloudKit', error);
+    loading.value = false;
+  }
+};
+
+
 
 const groupByDate = (healthData: HealthData[]): Record<string, HealthData[]> => {
   const grouped: Record<string, HealthData[]> = {};
@@ -153,15 +179,18 @@ const addToDataByDate = (formattedData: HealthData[]) => {
           <!-- Condición actualizada: Si es entrenamiento y es caminata o nado, muestra distancia. De lo contrario, muestra como antes. -->
           <span class="card__qty">
             {{
-              entry.dataType === 'workout' && 'workoutActivityName' in entry &&
-              (entry.workoutActivityName === "Walking" || entry.workoutActivityName === "Other")
+              entry.dataType === 'cloudKitEntry'
+                ? entry.value + ' ' + entry.unitName
+                : entry.dataType === 'workout' && 'workoutActivityName' in entry &&
+                  (entry.workoutActivityName === "Walking" || entry.workoutActivityName === "Other")
                 ? (Math.floor(entry.value * 100) / 100).toFixed(2) + ' ' + entry.unitName
                 : entry.value + ' ' + entry.unitName
             }}
           </span>
           <span class="card__bottom" :class="{
             'card__bottom--weight': entry.dataType === 'weight',
-            'card__bottom--workout': entry.dataType === 'workout'
+            'card__bottom--workout': entry.dataType === 'workout',
+            'card__bottom--cloudKitEntry': entry.dataType === 'cloudKitEntry'
           }">
             {{ formatTimeToHHMM(entry.startDate) }}
           </span>
@@ -226,6 +255,9 @@ h3::first-letter {
     }
     &--workout {
       background: $green;
+    }
+    &--cloudKitEntry {
+      background: $purple;
     }
   }
 }

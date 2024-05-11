@@ -47,29 +47,28 @@ public class CloudKitPlugin: CAPPlugin {
         guard let recordType = call.options["recordType"] as? String else {
             return call.reject("Must provide recordType")
         }
-        
+
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: recordType, predicate: predicate)
-        
+
         CKContainer.default().privateCloudDatabase.perform(query, inZoneWith: nil) { records, error in
             if let error = error {
                 print("Error fetching records: \(error.localizedDescription)")
                 call.reject("Error fetching records: \(error.localizedDescription)")
                 return
             }
-            
+
             if let records = records {
                 let recordData = records.map { record -> [String: Any] in
                     var data = [String: Any]()
+                    data["uuid"] = record.recordID.recordName
+                    data["creationDate"] = ISO8601DateFormatter().string(from: record.creationDate!)
                     for key in record.allKeys() {
                         data[key] = record[key]
                     }
-                    if let creationDate = record.creationDate {
-                        data["creationDate"] = ISO8601DateFormatter().string(from: creationDate)
-                    }
                     return data
                 }
-                
+
                 call.resolve([
                     "records": recordData
                 ])

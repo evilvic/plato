@@ -208,3 +208,14 @@ export const WORKOUT_DATA = [
   }
 ]
 
+export const FOOD_DATA = [
+  {
+    "creationDate":"2024-05-10T22:37:07Z",
+    "description":"Medio litro de agua de sandía, un burrito de rubí eye al pastor, tenía frijoles, queso, tortillas fritas, unas rebanadas de de jitomate y pepino, acompañes papas fritas. Chicharrón de queso."
+  },
+  {
+    "description":"Apple",
+    "creationDate":"2024-05-10T20:46:18Z"
+  }
+]
+
