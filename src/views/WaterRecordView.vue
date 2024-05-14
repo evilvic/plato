@@ -2,10 +2,12 @@
 import { ref } from 'vue'
 import { saveData } from '@/plugins/HealthKitPlugin'
 import { createRecord } from '@/plugins/CloudKitPlugin';
+import { takePicture } from '@/plugins/Camera';
 
 const weight = ref<number | null>(null)
 const water = ref<number | null>(null)
 const food = ref<string>('')
+const imageDataUrl = ref<string | null>(null);
 
 const handleSaveWeight = () => {
   if (weight.value !== null) {
@@ -22,9 +24,17 @@ const handleSaveWater = () => {
 const handleSaveFood = () => {
   console.log(food.value)
   if (food.value !== '') {
-    createRecord(food.value)
+    createRecord(food.value, [imageDataUrl.value || ''])
   }
 }
+
+const handleTakePicture = async () => {
+  const picture = await takePicture();
+  if (picture) {
+    imageDataUrl.value = picture;
+    console.log('Picture taken:', picture);
+  }
+};
 
 </script>
 
@@ -52,8 +62,14 @@ const handleSaveFood = () => {
     >
       Guardar agua
     </button>
-    <textarea v-model="food" />
 
+    <img v-if="imageDataUrl" :src="imageDataUrl" alt="Food Image" />
+
+    <button v-else @click="handleTakePicture">
+      Tomar foto
+    </button>
+
+    <textarea v-model="food" />
     <button @click="handleSaveFood">
       Guardar comida
     </button>

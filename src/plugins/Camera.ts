@@ -1,15 +1,5 @@
 import { Camera, CameraResultType } from '@capacitor/camera';
 
-const takePicture = async () => {
-  const image = await Camera.getPhoto({
-    quality: 90,
-    allowEditing: true,
-    resultType: CameraResultType.Uri
-  });
-
-  var imageUrl = image.webPath;
-};
-
 export const checkPermissions = async () => {
   const cameraPermissions = await Camera.checkPermissions();
 
@@ -20,3 +10,13 @@ export const checkPermissions = async () => {
     console.log(permissionRequest);
   }
 }
+
+export const takePicture = async () => {
+  const image = await Camera.getPhoto({
+    quality: 90,
+    allowEditing: true,
+    resultType: CameraResultType.DataUrl
+  });
+
+  return image.dataUrl
+};

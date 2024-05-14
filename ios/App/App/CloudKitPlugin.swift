@@ -20,9 +20,21 @@ public class CloudKitPlugin: CAPPlugin {
         }
         
         let record = CKRecord(recordType: recordType)
+        var assets: [CKAsset] = []
 
         for (key, value) in fields {
-            record.setValue(value, forKey: key)
+            if key == "images", let imagePaths = value as? [String] {
+                for imagePath in imagePaths {
+                    if let data = Data(base64Encoded: imagePath, options: .ignoreUnknownCharacters),
+                        let url = createTemporaryFile(data: data) {
+                            let asset = CKAsset(fileURL: url)
+                            assets.append(asset)
+                        }
+                    }
+                    record.setValue(assets, forKey: key)
+                } else {
+                    record.setValue(value, forKey: key)
+                }
         }
         
         print("Using default container: \(CKContainer.default().containerIdentifier ?? "Unknown Container")")
@@ -41,7 +53,19 @@ public class CloudKitPlugin: CAPPlugin {
                 call.resolve()
             }
         }
-  }
+    }
+    
+    func createTemporaryFile(data: Data) -> URL? {
+        let temporaryDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
+        let temporaryFileURL = temporaryDirectoryURL.appendingPathComponent(UUID().uuidString).appendingPathExtension("jpg")
+        do {
+            try data.write(to: temporaryFileURL)
+            return temporaryFileURL
+        } catch {
+            print("Error writing file: \(error)")
+            return nil
+        }
+    }
 
   @objc func fetchRecords(_ call: CAPPluginCall) {
         guard let recordType = call.options["recordType"] as? String else {
@@ -64,7 +88,18 @@ public class CloudKitPlugin: CAPPlugin {
                     data["uuid"] = record.recordID.recordName
                     data["creationDate"] = ISO8601DateFormatter().string(from: record.creationDate!)
                     for key in record.allKeys() {
-                        data[key] = record[key]
+                        let value = record[key]
+                        if let asset = value as? CKAsset, let fileURL = asset.fileURL {
+                            data[key] = fileURL.absoluteString
+                        } else if let date = value as? Date {
+                            data[key] = ISO8601DateFormatter().string(from: date)
+                        } else if let number = value as? NSNumber {
+                            data[key] = number
+                        } else if let string = value as? String {
+                            data[key] = string
+                        } else {
+                            data[key] = "\(String(describing: value))"
+                        }
                     }
                     return data
                 }
