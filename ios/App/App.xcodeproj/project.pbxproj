@@ -16,6 +16,7 @@
 		1CA042B02A832E8300313963 /* HealthKitPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA042AF2A832E8300313963 /* HealthKitPlugin.swift */; };
 		1CA042B22A832F0400313963 /* HealthKitPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CA042B12A832F0400313963 /* HealthKitPlugin.m */; };
 		1CA042B42A832F5A00313963 /* HealthKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA042B32A832F5A00313963 /* HealthKitHelper.swift */; };
+		1CDC0C562BF2E16500549716 /* PluginsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDC0C552BF2E16500549716 /* PluginsViewController.swift */; };
 		2FAD9763203C412B000D30F8 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2FAD9762203C412B000D30F8 /* config.xml */; };
 		50379B232058CBB4000EE86E /* capacitor.config.json in Resources */ = {isa = PBXBuildFile; fileRef = 50379B222058CBB4000EE86E /* capacitor.config.json */; };
 		504EC3081FED79650016851F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504EC3071FED79650016851F /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 		1CA042B12A832F0400313963 /* HealthKitPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HealthKitPlugin.m; sourceTree = "<group>"; };
 		1CA042B32A832F5A00313963 /* HealthKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitHelper.swift; sourceTree = "<group>"; };
 		1CA042B52A83328A00313963 /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
+		1CDC0C552BF2E16500549716 /* PluginsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginsViewController.swift; sourceTree = "<group>"; };
 		2FAD9762203C412B000D30F8 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
 		50379B222058CBB4000EE86E /* capacitor.config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = capacitor.config.json; sourceTree = "<group>"; };
 		504EC3041FED79650016851F /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +114,7 @@
 				1C6579BD2AA7D855002F7CC3 /* SuppressLongPressPlugin.m */,
 				1C5535072BED9637003BDF51 /* CloudKitPlugin.swift */,
 				1C5535092BED9AF5003BDF51 /* CloudKitPlugin.m */,
+				1CDC0C552BF2E16500549716 /* PluginsViewController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 			files = (
 				1C99A7372A831913004014F1 /* SafeAreaPlugin.m in Sources */,
 				1C6579BC2AA7B89E002F7CC3 /* SuppressLongPressPlugin.swift in Sources */,
+				1CDC0C562BF2E16500549716 /* PluginsViewController.swift in Sources */,
 				1CA042B02A832E8300313963 /* HealthKitPlugin.swift in Sources */,
 				1C99A7342A8318AD004014F1 /* SafeAreaPlugin.swift in Sources */,
 				1CA042B22A832F0400313963 /* HealthKitPlugin.m in Sources */,
