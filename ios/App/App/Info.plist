@@ -51,6 +51,10 @@
 	<string>Necesitamos acceso para guardar fotos en tu biblioteca.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Necesitamos acceso a tu biblioteca de fotos para seleccionar imágenes de tus comidas.</string>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
 </dict>

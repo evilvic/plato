@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C48E1282BF423FD00D472A0 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1C48E1272BF423FD00D472A0 /* PrivacyInfo.xcprivacy */; };
 		1C5535082BED9637003BDF51 /* CloudKitPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5535072BED9637003BDF51 /* CloudKitPlugin.swift */; };
 		1C55350A2BED9AF5003BDF51 /* CloudKitPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5535092BED9AF5003BDF51 /* CloudKitPlugin.m */; };
 		1C6579BC2AA7B89E002F7CC3 /* SuppressLongPressPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6579BB2AA7B89E002F7CC3 /* SuppressLongPressPlugin.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C48E1272BF423FD00D472A0 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		1C5535072BED9637003BDF51 /* CloudKitPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitPlugin.swift; sourceTree = "<group>"; };
 		1C5535092BED9AF5003BDF51 /* CloudKitPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CloudKitPlugin.m; sourceTree = "<group>"; };
 		1C6579BB2AA7B89E002F7CC3 /* SuppressLongPressPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuppressLongPressPlugin.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 		504EC2FB1FED79650016851F = {
 			isa = PBXGroup;
 			children = (
+				1C48E1272BF423FD00D472A0 /* PrivacyInfo.xcprivacy */,
 				504EC3061FED79650016851F /* App */,
 				504EC3051FED79650016851F /* Products */,
 				7F8756D8B27F46E3366F6CEA /* Pods */,
@@ -190,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				504EC3121FED79650016851F /* LaunchScreen.storyboard in Resources */,
+				1C48E1282BF423FD00D472A0 /* PrivacyInfo.xcprivacy in Resources */,
 				50B271D11FEDC1A000F3C39B /* public in Resources */,
 				504EC30F1FED79650016851F /* Assets.xcassets in Resources */,
 				50379B232058CBB4000EE86E /* capacitor.config.json in Resources */,
