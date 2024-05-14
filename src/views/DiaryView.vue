@@ -2,6 +2,7 @@
 import { requestHKAuthorization } from '@/plugins/HealthKitPlugin'
 import { queryData } from '@/plugins/HealthKitPlugin'
 import { fetchRecords } from '@/plugins/CloudKitPlugin'
+import { checkPermissions } from '@/plugins/Camera'
 import { formatTimeToHHMM, formatDateToYYYYMMDD, formatDateWithTodayAndYesterday } from '@/helpers/dayjs'
 import { ref, computed, onMounted } from 'vue'
 
@@ -34,6 +35,7 @@ const data = ref<Record<string, HealthData[]>>({});
 const castedData = computed(() => data.value as Record<string, HealthData[]>);
 
 onMounted(() => {
+  checkPermissions()
   requestHKAuthorization()
   getWaterIntake();
   getWeight();
