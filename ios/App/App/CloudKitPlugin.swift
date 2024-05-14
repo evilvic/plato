@@ -88,18 +88,11 @@ public class CloudKitPlugin: CAPPlugin {
                     data["uuid"] = record.recordID.recordName
                     data["creationDate"] = ISO8601DateFormatter().string(from: record.creationDate!)
                     for key in record.allKeys() {
-                        let value = record[key]
-                        if let asset = value as? CKAsset, let fileURL = asset.fileURL {
-                            data[key] = fileURL.absoluteString
-                        } else if let date = value as? Date {
-                            data[key] = ISO8601DateFormatter().string(from: date)
-                        } else if let number = value as? NSNumber {
-                            data[key] = number
-                        } else if let string = value as? String {
-                            data[key] = string
-                        } else {
-                            data[key] = "\(String(describing: value))"
-                        }
+                        if let assets = record[key] as? [CKAsset] {
+                                data[key] = assets.compactMap { $0.fileURL?.absoluteString }
+                            } else {
+                                data[key] = record[key]
+                            }
                     }
                     return data
                 }
