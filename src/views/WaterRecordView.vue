@@ -38,7 +38,7 @@ const handleTakePicture = async () => {
 };
 
 const analyzeFood = async () => {
-  const result = await analyzeFoodEntry();
+  const result = await analyzeFoodEntry(food.value);
   console.log('Analysis result:', result);
 };
 
