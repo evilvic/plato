@@ -16,6 +16,7 @@ interface BaseHealthData {
   duration: number;
   sourceBundleId: string;
   startDate: string;
+  imageBase64?: string[];
 }
 
 interface WorkoutHealthData extends BaseHealthData {
@@ -119,6 +120,7 @@ const getFood = async () => {
       source: 'CloudKit',
       sourceBundleId: 'fail.vic,plato',
       duration: 0,
+      imageBase64: (entry as { imageBase64: string[] }).imageBase64
     }));
 
     addToDataByDate(formattedData);
@@ -179,7 +181,8 @@ const addToDataByDate = (formattedData: HealthData[]) => {
       <ul class="container" v-if="!loading && data">
         <li class="card" v-for="entry in entries" :key="entry.uuid">
           <!-- Condición actualizada: Si es entrenamiento y es caminata o nado, muestra distancia. De lo contrario, muestra como antes. -->
-          <span class="card__qty">
+          <img v-if="entry.imageBase64 && entry.imageBase64.length > 0" :src="entry.imageBase64[0]" class="card__image" />
+          <span v-else class="card__qty">
             {{
               entry.dataType === 'cloudKitEntry'
                 ? entry.value + ' ' + entry.unitName
@@ -226,6 +229,13 @@ h3::first-letter {
   list-style: none;
   gap: 16px;
 }
+.card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  }
 .card {
   width: calc((100vw - 64px) / 3);
   height: calc((100vw - 64px) / 3);
