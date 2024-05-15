@@ -22,6 +22,7 @@
     "@capacitor/preferences": "^6.0.0",
     "@supabase/supabase-js": "^2.32.0",
     "dayjs": "^1.11.9",
+    "openai": "^4.47.1",
     "pinia": "^2.1.4",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"

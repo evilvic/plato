@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { saveData } from '@/plugins/HealthKitPlugin'
 import { createRecord } from '@/plugins/CloudKitPlugin';
 import { takePicture } from '@/plugins/Camera';
+import { analyzeFoodEntry } from '@/helpers/openai';
 
 const weight = ref<number | null>(null)
 const water = ref<number | null>(null)
@@ -34,6 +35,11 @@ const handleTakePicture = async () => {
     imageDataUrl.value = picture;
     console.log('Picture taken:', picture);
   }
+};
+
+const analyzeFood = async () => {
+  const result = await analyzeFoodEntry();
+  console.log('Analysis result:', result);
 };
 
 </script>
@@ -72,6 +78,10 @@ const handleTakePicture = async () => {
     <textarea v-model="food" />
     <button @click="handleSaveFood">
       Guardar comida
+    </button>
+
+    <button @click="analyzeFood">
+      Analizar comida
     </button>
 
   </main>
