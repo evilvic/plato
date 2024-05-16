@@ -10,7 +10,6 @@
   const email = ref<string>('')
 
   const handleLogin = async () => {
-    console.log(email.value)
     session.setEmail(email.value)
     try {
       await authService.sendOtp(email.value)

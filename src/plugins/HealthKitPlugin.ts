@@ -45,7 +45,6 @@ export const saveData = async (value: number, sample: string) => {
       sampleName: sample,
       value: value,
     });
-    console.log(response);
   } catch (error) {
     console.error(error);
   }

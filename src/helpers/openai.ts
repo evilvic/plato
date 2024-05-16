@@ -26,20 +26,20 @@ export async function analyzeFoodEntry(description: string) {
           {
             "items": [
               {
-                "alimento": "[nombre]",
-                "cantidad": "[cantidad]",
-                "calorias": "[valor]",
-                "grasas": "[valor]",
-                "proteinas": "[valor]",
-                "azucares": "[valor]"
+                "food": "[nombre]",
+                "quantity": "[cantidad]",
+                "calories": "[valor]",
+                "fat": "[valor]",
+                "protein": "[valor]",
+                "sugar": "[valor]"
               },
               ...
             ],
             "total": {
-              "calorias": "[valor]",
-              "grasas": "[valor]",
-              "proteinas": "[valor]",
-              "azucares": "[valor]"
+              "calories": "[valor]",
+              "fat": "[valor]",
+              "protein": "[valor]",
+              "sugar": "[valor]"
             }
           }
         `,
@@ -56,6 +56,5 @@ export async function analyzeFoodEntry(description: string) {
     },],
   });
 
-  console.log(response.choices[0].message.content);
   return response.choices[0].message.content;
 }

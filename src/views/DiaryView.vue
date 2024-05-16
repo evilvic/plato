@@ -28,7 +28,24 @@ interface WorkoutHealthData extends BaseHealthData {
   workoutActivityId?: number;
 }
 
-type HealthData = BaseHealthData | WorkoutHealthData;
+interface FoodData extends BaseHealthData {
+  totals: {
+    calories: number;
+    fat: number;
+    protein: number;
+    sugar: number;
+  };
+  items: {
+    food: string;
+    quantity: number;
+    calories: number;
+    fat: number;
+    protein: number;
+    sugar: number;
+  }[];
+}
+
+type HealthData = BaseHealthData | WorkoutHealthData | FoodData;
 
 const loading = ref<boolean>(false);
 const data = ref<Record<string, HealthData[]>>({});
@@ -84,7 +101,6 @@ const getWeight = async () => {
 
 const getWorkouts = async () => {
   const workoutData = await queryData("workout") as HealthData[] || [];
-  console.log(workoutData);
 
   const formattedData: HealthData[] = workoutData.map(entry => 
   'workoutActivityName' in entry ? {
@@ -108,19 +124,20 @@ const getWorkouts = async () => {
 const getFood = async () => {
   try {
     const records = await fetchRecords();
-    console.log('Fetched records from CloudKit:', records);
 
     const formattedData: HealthData[] = records.map(entry => ({
       dataType: 'cloudKitEntry',
       value: 1,
       unitName: 'meal',
       uuid: (entry as { uuid: string }).uuid,
-      startDate: entry.creationDate,
-      endDate: entry.creationDate,
+      startDate: entry.creationDate || new Date().toISOString(),
+      endDate: entry.creationDate || new Date().toISOString(),
       source: 'CloudKit',
       sourceBundleId: 'fail.vic,plato',
       duration: 0,
-      imageBase64: (entry as { imageBase64: string[] }).imageBase64
+      imageBase64: (entry as { imageBase64: string[] }).imageBase64,
+      items: (entry as { items: any[] }).items,
+      totals: (entry as { totals: any }).totals,
     }));
 
     addToDataByDate(formattedData);

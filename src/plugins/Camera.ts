@@ -3,11 +3,10 @@ import { Camera, CameraResultType } from '@capacitor/camera';
 export const checkPermissions = async () => {
   const cameraPermissions = await Camera.checkPermissions();
 
-  console.log(cameraPermissions); // {"camera":"prompt","photos":"prompt"}
+ // {"camera":"prompt","photos":"prompt"}
 
   if (cameraPermissions.camera === 'prompt') {
     const permissionRequest = await Camera.requestPermissions();
-    console.log(permissionRequest);
   }
 }
 

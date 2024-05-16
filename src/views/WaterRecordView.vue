@@ -9,6 +9,7 @@ const weight = ref<number | null>(null)
 const water = ref<number | null>(null)
 const food = ref<string>('')
 const imageDataUrl = ref<string | null>(null);
+const analysisResult = ref<string | null>(null);
 
 const handleSaveWeight = () => {
   if (weight.value !== null) {
@@ -22,24 +23,42 @@ const handleSaveWater = () => {
   }
 }
 
-const handleSaveFood = () => {
-  console.log(food.value)
-  if (food.value !== '') {
-    createRecord(food.value, [imageDataUrl.value || ''])
+const handleSaveFood = async () => {
+  if (food.value !== '' && imageDataUrl.value) {
+    // Analizar la comida
+    const result = await analyzeFoodEntry(food.value);
+    const parsedResult = result ? JSON.parse(result) : '';
+    analysisResult.value = parsedResult;
+    
+
+    const items = parsedResult.items
+
+
+    const totals = parsedResult.total;
+
+    // Crear el registro en CloudKit
+    if (analysisResult.value) {
+      const foodEntry = {
+        items,
+        totals,
+        description: food.value,
+        images: [imageDataUrl.value],
+      };
+      await createRecord(foodEntry);
+    }
   }
-}
+};
 
 const handleTakePicture = async () => {
   const picture = await takePicture();
   if (picture) {
     imageDataUrl.value = picture;
-    console.log('Picture taken:', picture);
   }
 };
 
 const analyzeFood = async () => {
   const result = await analyzeFoodEntry(food.value);
-  console.log('Analysis result:', result);
+  console.log('Food analysis:', result);
 };
 
 </script>

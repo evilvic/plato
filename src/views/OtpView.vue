@@ -10,7 +10,6 @@ const session = useSessionStore()
 const otp = ref<string>('')
 
 const handleOtp = async () => {
-  console.log(otp.value, session.email)
   try {
     await authService.verifyOtp(session.email, otp.value)
     router.push('/')
