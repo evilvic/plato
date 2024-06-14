@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-// import { saveData } from '@/plugins/HealthKitPlugin'
+import { saveData } from '@/plugins/HealthKitPlugin'
 import { createRecord } from '@/plugins/CloudKitPlugin';
 import { takePicture } from '@/plugins/Camera';
 import { analyzeFoodEntry } from '@/helpers/openai';
@@ -31,6 +31,7 @@ const handleSaveFood = async () => {
 
     // Crear el registro en CloudKit
     if (analysisResult.value) {
+      await saveData(Number(analysisResult.value.total.calories), 'dietaryEnergy');
       const foodEntry: FoodEntry = {
         items: items || [],
         totals: totals || { calories: '', fat: '', protein: '', sugar: '' },

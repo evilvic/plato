@@ -22,6 +22,8 @@ public class HealthKitHelper {
                 types.insert(HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!)
             case "workout":
                 types.insert(HKWorkoutType.workoutType())
+            case "dietaryEnergy":
+                types.insert(HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryEnergyConsumed)!)
             default:
                 print("no match in case: " + item)
             }
@@ -37,6 +39,8 @@ public class HealthKitHelper {
             return HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!
         case "workout":
             return HKWorkoutType.workoutType()
+        case "dietaryEnergy":
+            return HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryEnergyConsumed)!
         default:
             return nil
         }
@@ -168,6 +172,9 @@ public class HealthKitHelper {
         } else if sampleName == "weight" {
             unit = HKUnit.gramUnit(with: .kilo)
             unitName = "kilogram"
+        } else if sampleName == "dietaryEnergy" {
+            unit = HKUnit.kilocalorie()
+            unitName = "kilocalorie"
         } else {
             print("Error: unknown unit type")
             return nil

@@ -7,7 +7,7 @@ const HealthKit = registerPlugin<HealthKitPlugin>('HealthKitPlugin')
 export const requestHKAuthorization = async () => {
     try {
         await HealthKit.requestAuthorization({
-            all: ["water", "weight", "workout"],
+            all: ["water", "weight", "workout", "dietaryEnergy"],
             read: [],
             write: [],
         })
