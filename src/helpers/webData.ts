@@ -219,3 +219,53 @@ export const FOOD_DATA = [
   }
 ]
 
+export const FOOD_ANALYSIS_DATA = {
+  "items": [
+    {
+      "food": "Media manzana verde",
+      "quantity": "0.5",
+      "calories": "23",
+      "fat": "0.1g",
+      "protein": "0.2g",
+      "sugar": "4.9g"
+    },
+    {
+      "food": "5 uvas verdes",
+      "quantity": "5",
+      "calories": "20",
+      "fat": "0.1g",
+      "protein": "0.4g",
+      "sugar": "3.9g"
+    },
+    {
+      "food": "Medio mango",
+      "quantity": "0.5",
+      "calories": "67",
+      "fat": "0.4g",
+      "protein": "0.7g",
+      "sugar": "14.8g"
+    },
+    {
+      "food": "Una cucharada de yogur griego",
+      "quantity": "1",
+      "calories": "59",
+      "fat": "3.3g",
+      "protein": "5.3g",
+      "sugar": "4.0g"
+    },
+    {
+      "food": "Mix de nueces",
+      "quantity": "1 porción",
+      "calories": "173",
+      "fat": "16.1g",
+      "protein": "6.1g",
+      "sugar": "1.1g"
+    }
+  ],
+  "total": {
+    "calories": "342",
+    "fat": "19.9g",
+    "protein": "12.7g",
+    "sugar": "28.7g"
+  }
+}

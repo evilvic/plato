@@ -5,10 +5,10 @@ import { convertLocalFileToBase64 } from '@/plugins/Filesystem';
 export interface FoodItem {
   food: string;
   quantity: string;
-  calories: number;
-  fat: number;
-  protein: number;
-  sugar: number;
+  calories: string;
+  fat: string;
+  protein: string;
+  sugar: string;
 }
 
 export interface FoodEntry {
@@ -17,10 +17,10 @@ export interface FoodEntry {
   creationDate?: string;
   items: FoodItem[];
   totals?: {
-    calories: number;
-    fat: number;
-    protein: number;
-    sugar: number;
+    calories: string;
+    fat: string;
+    protein: string;
+    sugar: string;
   };
   images?: string[];
   imageBase64?: string[];
