@@ -124,6 +124,23 @@ public class HealthKitPlugin: CAPPlugin {
                 call.reject("Error saving weight: \(String(describing: error?.localizedDescription))")
             }
         }
+        case "dietaryEnergy":
+            guard let quantityType = HKObjectType.quantityType(forIdentifier: .dietaryEnergyConsumed) else {
+                return call.reject("Dietary Energy Type is not available in HealthKit")
+            }
+            let energyQuantity = HKQuantity(unit: HKUnit.kilocalorie(), doubleValue: _value)
+            let energySample = HKQuantitySample(type: quantityType, quantity: energyQuantity, start: _date, end: _date)
+            HealthKitHelper.healthStore.save(energySample) { (success, error) in
+                if success {
+                    if let sampleData = HealthKitHelper.generateOutputForSingleSample(sampleName: _sampleName, sample: energySample) {
+                        call.resolve(["sample": sampleData])
+                    } else {
+                        call.reject("Error generating sample data")
+                    }
+                } else {
+                    call.reject("Error saving dietary energy: \(String(describing: error?.localizedDescription))")
+                }
+            }
         default:
             call.reject("Unsupported sample type: \(_sampleName)")
         }
