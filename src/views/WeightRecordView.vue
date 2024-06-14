@@ -2,11 +2,11 @@
 import { ref } from 'vue'
 import { saveData } from '@/plugins/HealthKitPlugin'
 
-const water = ref<number | null>(null)
+const weight = ref<number | null>(null)
 
-const handleSaveWater = () => {
-  if (water.value !== null) {
-    saveData(water.value, 'water')
+const handleSaveWeight = () => {
+  if (weight.value !== null) {
+    saveData(weight.value, 'weight')
   }
 }
 
@@ -14,16 +14,16 @@ const handleSaveWater = () => {
 
 <template>
   <main class="water-record">
-    
+
     <input
       type="number"
       placeholder="0"
-      v-model="water"
+      v-model="weight"
     >
     <button
-      @click="handleSaveWater"
+      @click="handleSaveWeight"
     >
-      Guardar agua
+      Guardar peso
     </button>
 
   </main>
