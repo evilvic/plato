@@ -141,6 +141,57 @@ public class HealthKitPlugin: CAPPlugin {
                     call.reject("Error saving dietary energy: \(String(describing: error?.localizedDescription))")
                 }
             }
+        case "totalFat":
+            guard let quantityType = HKObjectType.quantityType(forIdentifier: .dietaryFatTotal) else {
+                return call.reject("Total Fat Type is not available in HealthKit")
+            }
+            let fatQuantity = HKQuantity(unit: HKUnit.gram(), doubleValue: _value)
+            let fatSample = HKQuantitySample(type: quantityType, quantity: fatQuantity, start: _date, end: _date)
+            HealthKitHelper.healthStore.save(fatSample) { (success, error) in
+                if success {
+                    if let sampleData = HealthKitHelper.generateOutputForSingleSample(sampleName: _sampleName, sample: fatSample) {
+                        call.resolve(["sample": sampleData])
+                    } else {
+                        call.reject("Error generating sample data")
+                    }
+                } else {
+                    call.reject("Error saving total fat: \(String(describing: error?.localizedDescription))")
+                }
+            }
+        case "protein":
+            guard let quantityType = HKObjectType.quantityType(forIdentifier: .dietaryProtein) else {
+                return call.reject("Protein Type is not available in HealthKit")
+            }
+            let proteinQuantity = HKQuantity(unit: HKUnit.gram(), doubleValue: _value)
+            let proteinSample = HKQuantitySample(type: quantityType, quantity: proteinQuantity, start: _date, end: _date)
+            HealthKitHelper.healthStore.save(proteinSample) { (success, error) in
+                if success {
+                    if let sampleData = HealthKitHelper.generateOutputForSingleSample(sampleName: _sampleName, sample: proteinSample) {
+                        call.resolve(["sample": sampleData])
+                    } else {
+                        call.reject("Error generating sample data")
+                    }
+                } else {
+                    call.reject("Error saving protein: \(String(describing: error?.localizedDescription))")
+                }
+            }
+        case "carbohydrates":
+            guard let quantityType = HKObjectType.quantityType(forIdentifier: .dietaryCarbohydrates) else {
+                return call.reject("Carbohydrates Type is not available in HealthKit")
+            }
+            let carbohydratesQuantity = HKQuantity(unit: HKUnit.gram(), doubleValue: _value)
+            let carbohydratesSample = HKQuantitySample(type: quantityType, quantity: carbohydratesQuantity, start: _date, end: _date)
+            HealthKitHelper.healthStore.save(carbohydratesSample) { (success, error) in
+                if success {
+                    if let sampleData = HealthKitHelper.generateOutputForSingleSample(sampleName: _sampleName, sample: carbohydratesSample) {
+                        call.resolve(["sample": sampleData])
+                    } else {
+                        call.reject("Error generating sample data")
+                    }
+                } else {
+                    call.reject("Error saving carbohydrates: \(String(describing: error?.localizedDescription))")
+                }
+            }
         default:
             call.reject("Unsupported sample type: \(_sampleName)")
         }

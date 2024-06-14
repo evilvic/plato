@@ -24,6 +24,12 @@ public class HealthKitHelper {
                 types.insert(HKWorkoutType.workoutType())
             case "dietaryEnergy":
                 types.insert(HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryEnergyConsumed)!)
+            case "totalFat":
+                types.insert(HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryFatTotal)!)
+            case "protein":
+                types.insert(HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryProtein)!)
+            case "carbohydrates":
+                types.insert(HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryCarbohydrates)!)
             default:
                 print("no match in case: " + item)
             }
@@ -41,6 +47,12 @@ public class HealthKitHelper {
             return HKWorkoutType.workoutType()
         case "dietaryEnergy":
             return HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryEnergyConsumed)!
+        case "totalFat":
+            return HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryFatTotal)!
+        case "protein":
+            return HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryProtein)!
+        case "carbohydrates":
+            return HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.dietaryCarbohydrates)!
         default:
             return nil
         }
@@ -175,6 +187,15 @@ public class HealthKitHelper {
         } else if sampleName == "dietaryEnergy" {
             unit = HKUnit.kilocalorie()
             unitName = "kilocalorie"
+        } else if sampleName == "totalFat" {
+            unit = HKUnit.gram()
+            unitName = "gram"
+        } else if sampleName == "protein" {
+            unit = HKUnit.gram()
+            unitName = "gram"
+        } else if sampleName == "carbohydrates" {
+            unit = HKUnit.gram()
+            unitName = "gram"
         } else {
             print("Error: unknown unit type")
             return nil

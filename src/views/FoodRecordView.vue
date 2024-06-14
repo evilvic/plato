@@ -32,6 +32,9 @@ const handleSaveFood = async () => {
     // Crear el registro en CloudKit
     if (analysisResult.value) {
       await saveData(Number(analysisResult.value.total.calories), 'dietaryEnergy');
+      await saveData(Number(analysisResult.value.total.fat.replace(/[a-zA-Z]/g, '')), 'totalFat');
+      await saveData(Number(analysisResult.value.total.protein.replace(/[a-zA-Z]/g, '')), 'protein');
+      await saveData(Number(analysisResult.value.total.sugar.replace(/[a-zA-Z]/g, '')), 'carbohydrates');
       const foodEntry: FoodEntry = {
         items: items || [],
         totals: totals || { calories: '', fat: '', protein: '', sugar: '' },
